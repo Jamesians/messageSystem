@@ -132,7 +132,7 @@
             data:{name:$("#name").val(),password:$("#password").val()},
             success:function (data) {
                 alert(data);
-            }
+    }
         });
     })
 </script>
