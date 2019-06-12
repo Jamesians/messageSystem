@@ -41,7 +41,7 @@
             return false;
         }
         $.ajax({
-            url:"/M-login",
+            url:"/login-M",
             type:"post",
             data:{name:$("#name").val(),password:$("#password").val()},
             success:function (data) {

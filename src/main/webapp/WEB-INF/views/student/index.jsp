@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <link type="text/css" rel="styleSheet"  href="../../../resource/css/sidemenu.css" />
 <link type="text/css" rel="styleSheet"  href="../../../resource/css/header.css" />
 <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
@@ -26,7 +27,7 @@
         <!-- <img class = "top_menu" src = "img/xiaohui.png" alt="校徽"> -->
         <p class = "top_intro">欢迎登入教务在线系统</p>
         <button id = "top_but" class="layui-btn layui-btn-radius">退出登入</button>
-        <p class = "user_name">Admin</p>
+        <p class = "user_name">${sessionScope.user.name }</p>
         <img class = "top_user_logo" src = "../../resource/img/user1.jpg" alt="用户">
     </header>
     <div class = "sidemenu">
@@ -43,6 +44,18 @@
         </iframe>
     </div>
 </div>
+<script>
+    $("#top_but").click(function () {
+        $.ajax({
+            url:"/logout",
+            type:"post",
+            success:function () {
+                window.location.href='/login';
+            }
+        });
+        return false;
+    })
+</script>
 </body>
 
 </html>

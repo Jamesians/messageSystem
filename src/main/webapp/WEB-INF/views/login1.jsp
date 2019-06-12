@@ -107,16 +107,38 @@
   <form>
        <h1>学生成绩管理系统</h1>
        <div>
-          <select>
+          <select id="co">
             <option  value ="老师">Teacher</option>
-            <option  value ="S ">Student</option>
+            <option  value ="S "  selected = "selected" >Student</option>
           </select>
        </div>
-       <input placeholder="Username" type="text" required="">
-       <input placeholder="Password" type="password" required="">
-       <button class="">登陆</button>
+       <input id="name" placeholder="Username" type="text" required="">
+       <input id="password" placeholder="Password" type="password" required="">
+       <button class="submit">登陆</button>
        <button class="">注册</button>
   </form>
+  <script>
+      $(".submit").click(function () {
+
+          if($("#co").val()=='老师'){
+              alert('教师页面暂未开通！');
+              return false;
+          }
+          $.ajax({
+              url:"/login-M",
+              type:"post",
+              data:{name:$("#name").val(),password:$("#password").val()},
+              success:function (data) {
+                  if(data==""||data=="wrong password!"||data=="no users found!"){
+                      alert(data);
+                  }else{
+                      window.location.href='/student/index';
+                  }
+              }
+          });
+          return false;
+      })
+  </script>
 </body>
 
 </html>

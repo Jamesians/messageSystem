@@ -24,7 +24,7 @@ public class Login {
      */
     @RequestMapping("/login")
     public String log(){
-        return "login";
+        return "login1";
     }
 
     /**
@@ -32,7 +32,7 @@ public class Login {
      * @param request 参数
      * @return 返回处理信息
      */
-    @RequestMapping("/M-login")
+    @RequestMapping("/login-M")
     @ResponseBody
     public String login (HttpServletRequest request){
         String name = request.getParameter("name");
@@ -43,6 +43,7 @@ public class Login {
             return "no users found!";
         }else{
             if(pwd.equals(myuser.getPassword())){
+                request.getSession().setAttribute("user", myuser);
                 return myuser.getUsername();
             }else{
                 return "wrong password!";
@@ -58,5 +59,18 @@ public class Login {
     @ResponseBody
     public List<User> all(){
         return allUser.All();
+    }
+
+
+    /**
+     * 注销账号
+     * @param request
+     * @return
+     */
+    @RequestMapping("/logout")
+    @ResponseBody
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return "";
     }
 }
