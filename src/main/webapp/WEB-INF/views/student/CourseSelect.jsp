@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2019/6/11
+  Time: 21:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!<!DOCTYPE html>
     <html>
 
     <head>
@@ -6,9 +14,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>CourseSelect</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
-        <link type="text/css" rel="styleSheet" href="css/CourseSelect.css" />
+        <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
+        <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
         <style type="text/css">
             div.search {
                 padding: 30px 0

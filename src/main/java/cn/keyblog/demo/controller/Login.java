@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import cn.keyblog.demo.entity.User;
 
+import java.util.List;
+
 
 @Controller
 public class Login {
@@ -22,7 +24,7 @@ public class Login {
      */
     @RequestMapping("/login")
     public String log(){
-        return "login";
+        return "login1";
     }
 
     /**
@@ -30,21 +32,45 @@ public class Login {
      * @param request 参数
      * @return 返回处理信息
      */
-    @RequestMapping("/M-login")
+    @RequestMapping("/login-M")
     @ResponseBody
     public String login (HttpServletRequest request){
         String name = request.getParameter("name");
         String pwd = request.getParameter("password");
-        if(name==null||pwd==null)   return null;
+        if(name==null||pwd==null)   return "";
         User myuser = allUser.select(name);
         if(myuser==null){
             return "no users found!";
         }else{
             if(pwd.equals(myuser.getPassword())){
+                request.getSession().setAttribute("user", myuser);
                 return myuser.getUsername();
             }else{
                 return "wrong password!";
             }
         }
+    }
+
+    /**
+     * 以json格式返回所有数据
+     * @return
+     */
+    @RequestMapping("/all")
+    @ResponseBody
+    public List<User> all(){
+        return allUser.All();
+    }
+
+
+    /**
+     * 注销账号
+     * @param request
+     * @return
+     */
+    @RequestMapping("/logout")
+    @ResponseBody
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return "";
     }
 }
