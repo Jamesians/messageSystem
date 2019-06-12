@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import cn.keyblog.demo.entity.User;
 
+import java.util.List;
+
 
 @Controller
 public class Login {
@@ -35,7 +37,7 @@ public class Login {
     public String login (HttpServletRequest request){
         String name = request.getParameter("name");
         String pwd = request.getParameter("password");
-        if(name==null||pwd==null)   return null;
+        if(name==null||pwd==null)   return "";
         User myuser = allUser.select(name);
         if(myuser==null){
             return "no users found!";
@@ -46,5 +48,15 @@ public class Login {
                 return "wrong password!";
             }
         }
+    }
+
+    /**
+     * 以json格式返回所有数据
+     * @return
+     */
+    @RequestMapping("/all")
+    @ResponseBody
+    public List<User> all(){
+        return allUser.All();
     }
 }
