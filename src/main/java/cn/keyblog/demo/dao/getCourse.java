@@ -11,11 +11,10 @@ import java.util.List;
 @Mapper
 public interface getCourse {
     /**
-     * 获取k课程类型为name的所有课程
-     * @param name
+     * 获取k课程类型为type的所有课程
+     * @param type
      * @return
      */
-    @Select("select number,cname,score from course,curriculum,category_course where course.number = curriculum.course_id and " +
-            "category_course.id = curriculum.category_id and category_course.name=#{name}")
-    public List<Course> select(@Param("name") String name);
+    @Select("select number, cname, ename, score, semester from mycourse where name=#{type}")
+    public List<Course> select(@Param("type") String type);
 }

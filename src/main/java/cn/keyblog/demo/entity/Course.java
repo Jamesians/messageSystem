@@ -3,9 +3,9 @@ package cn.keyblog.demo.entity;
 public class Course {
     int number;
     String cname;
-    String score;
+    String ename;
+    int score;
     int semsstser;
-    String name;
 
     public int getNumber() {
         return number;
@@ -15,16 +15,16 @@ public class Course {
         return cname;
     }
 
-    public String getScore() {
+    public String getEname() {
+        return ename;
+    }
+
+    public int getScore() {
         return score;
     }
 
     public int getSemsstser() {
         return semsstser;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setNumber(int number) {
@@ -35,15 +35,15 @@ public class Course {
         this.cname = cname;
     }
 
-    public void setScore(String score) {
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+
+    public void setScore(int score) {
         this.score = score;
     }
 
     public void setSemsstser(int semsstser) {
         this.semsstser = semsstser;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

@@ -106,11 +106,11 @@
         </div>
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" id="main_content">
             <ul class="layui-tab-title">
-                <li class="layui-this">公共基础</li>
-                <li>学科基础</li>
-                <li>专业主干</li>
-                <li>专业任选</li>
-                <li>公共选修</li>
+                <li class="layui-this" id="type1">公共基础</li>
+                <li  id="type2">学科基础</li>
+                <li  id="type3">专业主干</li>
+                <li  id="type4">专业任选</li>
+                <li  id="type5">公共选修</li>
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
@@ -127,13 +127,13 @@
                             <tr>
                                 <th>课程号</th>
                                 <th>课程名</th>
-                                <th>任课老师</th>
+                                <th>英文名</th>
                                 <th>学期</th>
                                 <th>学分</th>
                                 <th>选课</th>
                             </tr>
                         </thead>
-                        <tbody id="temp">
+                        <tbody id="typeCourse1">
                             <%--<tr>--%>
                                 <%--<td>1001</td>--%>
                                 <%--<td>大学英语（四级）Ⅰ</td>--%>
@@ -163,25 +163,34 @@
 
         <script>
             $(document).ready(function(){
-                // $.ajax({
-                //     url:,
-                //     type:'get',
-                //     dataType:'json',
-                //     data:{},
-                //     success:function (data) {
-                //
-                //
-                // })
+                 $.ajax({
+                     url:"/Course-basic",
+                     type:'get',
+                     dataType:'json',
+                     data:{type:$("#type1").val()},
+                     success:function (data) {
+                            if(data!=null)
+                            {
+                                $("#typeCourse1").empty();
+                                $.each(data,function (index,item) {
+                                    var number = data[index].number;
+                                    var cname = data[index].cname;
+                                    var ename = data[index].ename;
+                                    var semester = data[index].semester;
+                                    var score = data[index].score;
+                                    var html = "<tr>"+
+                                        "<td>"+number+"</td>"+
+                                        "<td>"+cname+"</td>"+
+                                        "<td>"+ename+"</td>"+
+                                        "<td>"+semester+"</td>"+
+                                        "<td>"+score+"</td>"+
+                                        "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
+                                        $("#typeCourse1").append(html);
+                                })
+                            }
+                     }
 
-                $("#temp").append("<tr>\n" +
-                "<td>1001</td>\n" +
-                "<td>大学英语（四级）Ⅰ</td>\n" +
-                "<td>李华</td>\n" +
-                "<td>大一上</td>\n" +
-                "<td>3</td>\n" +
-                "<td><button class=\"layui-btn layui-btn-normal layui-anim\"\n" +
-                "data-anim=\"layui-anim-scaleSpring\">未选</button></td>\n" +
-                " </tr>")
+
 
             })
         </script>
