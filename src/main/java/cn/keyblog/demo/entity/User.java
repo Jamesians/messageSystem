@@ -1,6 +1,7 @@
 package cn.keyblog.demo.entity;
 
 public class User {
+    private String scode;
     private String id;
     private String name;
     private String password;
@@ -10,6 +11,14 @@ public class User {
     private String gender;
     private String photo;
     private String class_id;
+
+    public String getScode() {
+        return scode;
+    }
+
+    public void setScode(String scode) {
+        this.scode = scode;
+    }
 
     public String getId() {
         return id;

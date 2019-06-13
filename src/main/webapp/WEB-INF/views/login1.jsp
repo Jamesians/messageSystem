@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Student Grade System</title>
+  <title>登录-教务管理系统</title>
   <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
   <style type="text/css">
   h1, input::-webkit-input-placeholder, button {
@@ -105,7 +105,7 @@
 
 <body>
   <form>
-       <h1>学生成绩管理系统</h1>
+       <h1>教务管理系统</h1>
        <div>
           <select id="co">
             <option  value ="老师">Teacher</option>

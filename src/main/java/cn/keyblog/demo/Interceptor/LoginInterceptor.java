@@ -22,10 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         User user = (User) request.getSession().getAttribute("user");
-        System.out.println("拦截中。。。。");
         if(user!=null){
             return true;
         }
+        System.out.println("未登录,跳转至登录页面...");
         response.sendRedirect("/login");
         return false;
     }
