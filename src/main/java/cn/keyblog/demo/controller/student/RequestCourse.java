@@ -1,4 +1,4 @@
-package cn.keyblog.demo.controller;
+package cn.keyblog.demo.controller.student;
 
 import cn.keyblog.demo.dao.getCourse;
 import cn.keyblog.demo.entity.Course;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
+@RequestMapping("/student")
 public class RequestCourse {
     @Resource
     private getCourse allCourse;
@@ -21,8 +22,9 @@ public class RequestCourse {
      */
     @RequestMapping("/Course-basic")
     @ResponseBody
-    public List<Course> login (HttpServletRequest request) {
+    public List<Course> Course (HttpServletRequest request) {
         String type = request.getParameter("type");
+        System.out.println(type);
         return allCourse.select(type);
     }
 
