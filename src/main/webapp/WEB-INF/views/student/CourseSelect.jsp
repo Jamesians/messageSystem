@@ -14,6 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>CourseSelect</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
         <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
         <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
@@ -132,24 +133,24 @@
                                 <th>选课</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1001</td>
-                                <td>大学英语（四级）Ⅰ</td>
-                                <td>李华</td>
-                                <td>大一上</td>
-                                <td>3</td>
-                                <td><button class="layui-btn layui-btn-normal layui-anim"
-                                        data-anim="layui-anim-scaleSpring">未选</button></td>
-                            </tr>
-                            <tr>
-                                <td>1002</td>
-                                <td>马克思主义基本原理</td>
-                                <td>李明</td>
-                                <td>大一下</td>
-                                <td>4</td>
-                                <td><button class="layui-btn layui-btn-normal">未选</button></td>
-                            </tr>
+                        <tbody id="temp">
+                            <%--<tr>--%>
+                                <%--<td>1001</td>--%>
+                                <%--<td>大学英语（四级）Ⅰ</td>--%>
+                                <%--<td>李华</td>--%>
+                                <%--<td>大一上</td>--%>
+                                <%--<td>3</td>--%>
+                                <%--<td><button class="layui-btn layui-btn-normal layui-anim"--%>
+                                        <%--data-anim="layui-anim-scaleSpring">未选</button></td>--%>
+                            <%--</tr>--%>
+                            <%--<tr>--%>
+                                <%--<td>1002</td>--%>
+                                <%--<td>马克思主义基本原理</td>--%>
+                                <%--<td>李明</td>--%>
+                                <%--<td>大一下</td>--%>
+                                <%--<td>4</td>--%>
+                                <%--<td><button class="layui-btn layui-btn-normal">未选</button></td>--%>
+                            <%--</tr>--%>
                         </tbody>
                     </table>
                 </div>
@@ -160,6 +161,30 @@
             </div>
         </div>
 
+        <script>
+            $(document).ready(function(){
+                // $.ajax({
+                //     url:,
+                //     type:'get',
+                //     dataType:'json',
+                //     data:{},
+                //     success:function (data) {
+                //
+                //
+                // })
+
+                $("#temp").append("<tr>\n" +
+                "<td>1001</td>\n" +
+                "<td>大学英语（四级）Ⅰ</td>\n" +
+                "<td>李华</td>\n" +
+                "<td>大一上</td>\n" +
+                "<td>3</td>\n" +
+                "<td><button class=\"layui-btn layui-btn-normal layui-anim\"\n" +
+                "data-anim=\"layui-anim-scaleSpring\">未选</button></td>\n" +
+                " </tr>")
+
+            })
+        </script>
     </body>
 
     </html>
