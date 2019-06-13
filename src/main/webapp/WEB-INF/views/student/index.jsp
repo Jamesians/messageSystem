@@ -27,14 +27,14 @@
         <!-- <img class = "top_menu" src = "img/xiaohui.png" alt="校徽"> -->
         <p class = "top_intro">欢迎登入教务在线系统</p>
         <button id = "top_but" class="layui-btn layui-btn-radius">退出登入</button>
-        <p class = "user_name">${sessionScope.user.name }</p>
-        <img class = "top_user_logo" src = "../../resource/img/user1.jpg" alt="用户">
+        <p class = "user_name">${sessionScope.user.uname }</p>
+        <img class = "top_user_logo" src = "${sessionScope.user.photo }" alt="用户">
     </header>
     <div class = "sidemenu">
         <div class="menu">
             <div class="menuItem uno">1<a target="iframe_a">个人信息</a></div>
             <div class="menuItem dos">2<a target="iframe_a">已选课程</a></div>
-            <div class="menuItem tres">3<a target="iframe_a" href="CourseSelect.jsp">选修课程</a></div>
+            <div class="menuItem tres">3<a target="iframe_a" href="/student/CourseSelect">选修课程</a></div>
             <div class="menuItem cuatro">4<a target="iframe_a">考试安排</a></div>
             <div class="menuItem cinco">5<a target="iframe_a">期末成绩</a></div>
         </div>

@@ -5,6 +5,11 @@ public class User {
     private String name;
     private String password;
     private String username;
+    private String uname;
+    private String uid;
+    private String gender;
+    private String photo;
+    private String class_id;
 
     public String getId() {
         return id;
@@ -36,5 +41,45 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getClass_id() {
+        return class_id;
+    }
+
+    public void setClass_id(String class_id) {
+        this.class_id = class_id;
     }
 }
