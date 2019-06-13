@@ -7,192 +7,244 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!<!DOCTYPE html>
-    <html>
+<html>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CourseSelect</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-        <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
-        <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
-        <style type="text/css">
-            div.search {
-                padding: 30px 0
-            }
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CourseSelect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
+    <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
+    <style type="text/css">
+        div.search {
+            padding: 30px 0
+        }
 
-            form {
-                position: relative;
-                width: 300px;
-                margin: 0 auto;
-            }
+        form {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+        }
 
-            .d1 {
-                background: #A3D0C3;
-            }
+        .d1 {
+            background: #A3D0C3;
+        }
 
-            .d1 input {
-                width: 100%;
-                height: 42px;
-                padding-left: 10px;
-                border: 2px solid #7BA7AB;
-                border-radius: 5px;
-                outline: none;
-                background: #F9F0DA;
-                color: #9E9C9C;
-            }
+        .d1 input {
+            width: 100%;
+            height: 42px;
+            padding-left: 10px;
+            border: 2px solid #7BA7AB;
+            border-radius: 5px;
+            outline: none;
+            background: #F9F0DA;
+            color: #9E9C9C;
+        }
 
-            .d1 button {
-                position: absolute;
-                top: 0;
-                right: 0px;
-                width: 42px;
-                height: 42px;
-                border: none;
-                background: #7BA7AB;
-                border-radius: 0 5px 5px 0;
-                cursor: pointer;
-            }
+        .d1 button {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            width: 42px;
+            height: 42px;
+            border: none;
+            background: #7BA7AB;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
 
-            .d1 button:before {
-                content: "\f002";
-                font-family: FontAwesome;
-                font-size: 16px;
-                color: #F9F0DA;
-            }
-        </style>
-        <script>
-            //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-            layui.use('element', function () {
-                var element = layui.element;
+        .d1 button:before {
+            content: "\f002";
+            font-family: FontAwesome;
+            font-size: 16px;
+            color: #F9F0DA;
+        }
+    </style>
+    <script>
+        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function () {
+            var element = layui.element;
 
-                //…
-            });
-        </script>
-    </head>
+            //…
+        });
+    </script>
+</head>
 
-    <body>
-        <header id="top_header">选课系统</header>
-        <hr class="layui-bg-gray">
+<body>
+<header id="top_header">选课系统</header>
+<hr class="layui-bg-gray">
 
-        <table class="layui-table">
-            <colgroup>
-                <col width="150">
-                <col width="200">
-                <col width="150">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>所有学分</th>
-                    <th>剩余学分</th>
-                    <th>已选学分</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>30</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="search d1">
-            <form>
-                <input type="text" placeholder="课程名搜索...">
-                <button type="submit"></button>
-            </form>
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col width="150">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>所有学分</th>
+        <th>剩余学分</th>
+        <th>已选学分</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>30</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    </tbody>
+</table>
+<div class="search d1">
+    <form>
+        <input type="text" placeholder="课程名搜索...">
+        <button type="submit"></button>
+    </form>
+</div>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" id="main_content">
+    <ul class="layui-tab-title">
+        <li class="layui-this" id="type1">公共基础</li>
+        <li id="type2">学科基础</li>
+        <li id="type3">专业主干</li>
+        <li id="type4">专业任选</li>
+        <li id="type5">公共选修</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show" id="course1">
+
+
         </div>
-        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" id="main_content">
-            <ul class="layui-tab-title">
-                <li class="layui-this" id="type1">公共基础</li>
-                <li  id="type2">学科基础</li>
-                <li  id="type3">专业主干</li>
-                <li  id="type4">专业任选</li>
-                <li  id="type5">公共选修</li>
-            </ul>
-            <div class="layui-tab-content">
-                <div class="layui-tab-item layui-show">
-                    <table id="tab1" class="layui-table" text-align="center">
-                        <colgroup>
-                            <col width="200">
-                            <col width="200">
-                            <col width="200">
-                            <col width="200">
-                            <col width="200">
-                            <col width="200">
-                        </colgroup>
-                        <thead id="tableHead">
-                            <tr>
-                                <th>课程号</th>
-                                <th>课程名</th>
-                                <th>英文名</th>
-                                <th>学期</th>
-                                <th>学分</th>
-                                <th>选课</th>
-                            </tr>
-                        </thead>
-                        <tbody id="typeCourse1">
-                            <%--<tr>--%>
-                                <%--<td>1001</td>--%>
-                                <%--<td>大学英语（四级）Ⅰ</td>--%>
-                                <%--<td>李华</td>--%>
-                                <%--<td>大一上</td>--%>
-                                <%--<td>3</td>--%>
-                                <%--<td><button class="layui-btn layui-btn-normal layui-anim"--%>
-                                        <%--data-anim="layui-anim-scaleSpring">未选</button></td>--%>
-                            <%--</tr>--%>
-                            <%--<tr>--%>
-                                <%--<td>1002</td>--%>
-                                <%--<td>马克思主义基本原理</td>--%>
-                                <%--<td>李明</td>--%>
-                                <%--<td>大一下</td>--%>
-                                <%--<td>4</td>--%>
-                                <%--<td><button class="layui-btn layui-btn-normal">未选</button></td>--%>
-                            <%--</tr>--%>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="layui-tab-item">内容2</div>
-                <div class="layui-tab-item">内容3</div>
-                <div class="layui-tab-item">内容4</div>
-                <div class="layui-tab-item">内容5</div>
-            </div>
-        </div>
+        <div class="layui-tab-item" id="course2">内容2</div>
+        <div class="layui-tab-item" id="course3">内容3</div>
+        <div class="layui-tab-item" id="course4">内容4</div>
+        <div class="layui-tab-item" id="course5">内容5</div>
+    </div>
+</div>
 
-        <script>
-            var semester = ("大一上","大一下","大二上","大二下","大三上","大三下","大四上","大四下");
-            $(document).ready(function(){
-                 $.ajax({
-                     url:"/student/Course-basic",
-                     type:'get',
-                     dataType:'json',
-                     data:{type:$("#type1").text()},
-                     success:function (data) {
-                            if(data!=null)
-                            {
-                                $("#typeCourse1").empty();
-                                $.each(data,function (index,item) {
-                                    var number = data[index].number;
-                                    var cname = data[index].cname;
-                                    var ename = data[index].ename;
-                                    var semester = data[index].semester;
-                                    var score = data[index].score;
-                                    semester = semesters[semester];
-                                    var html = "<tr>"+
-                                        "<td>"+number+"</td>"+
-                                        "<td>"+cname+"</td>"+
-                                        "<td>"+ename+"</td>"+
-                                        "<td>"+semester+"</td>"+
-                                        "<td>"+score+"</td>"+
-                                        "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
-                                        $("#typeCourse1").append(html);
-                                });
-                            }
-                     }
-            })})
-        </script>
-    </body>
+<script>
+    var CourseHead = "<table id=\"tab1\" class=\"layui-table\" text-align=\"center\">\n" +
+        "                        <colgroup>\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                        </colgroup>\n" +
+        "                        <thead id=\"tableHead\">\n" +
+        "                            <tr>\n" +
+        "                                <th>课程号</th>\n" +
+        "                                <th>课程名</th>\n" +
+        "                                <th>英文名</th>\n" +
+        "                                <th>学期</th>\n" +
+        "                                <th>学分</th>\n" +
+        "                                <th>选课</th>\n" +
+        "                            </tr>\n" +
+        "                        </thead>\n" +
+        "                        <tbody >\n" +
+        "                        </tbody></table>";
+    var semesters = new Array("大一上", "大一下", "大二上", "大二下", "大三上", "大三下", "大四上", "大四下");
+    $(document).ready(function () {
+        $.ajax({
+            url: "/student/Course-basic",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                type: $("#type1").text()
+            },
+            success: function (data) {
+                $("#course1").append(CourseHead);
+                $("#course1 >table >tbody").attr('id', 'CourseContent1');
 
-    </html>
+                if (data != null) {
+
+                    $("#CourseContent1").empty();
+                    $.each(data, function (index, item) {
+                        var number = data[index].number;
+                        var cname = data[index].cname;
+                        var ename = data[index].ename;
+                        var semester = data[index].semester;
+                        var score = data[index].score;
+                        semester = semesters[semester];
+                        var CourseContent = "<tr>" +
+                            "<td>" + number + "</td>" +
+                            "<td>" + cname + "</td>" +
+                            "<td>" + ename + "</td>" +
+                            "<td>" + semester + "</td>" +
+                            "<td>" + score + "</td>" +
+                            "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
+                        // alert(CourseContent);
+                        $("#CourseContent1").append(CourseContent);
+                    });
+                }
+            }
+        })
+    })
+    $("#type1,#type2,#type3,#type4,#type5").click(function (e) {
+        var type = e.target.id;
+        var tbodyId;
+        var courseId;
+        switch (type) {
+            case "type1":
+                tbodyId = "CourseContent1";
+                courseId = "course1";
+                break;
+            case "type2":
+                tbodyId = "CourseContent2";
+                courseId = "course2";
+                break;
+            case "type3":
+                tbodyId = "CourseContent3";
+                courseId = "course3";
+                break;
+            case "type4":
+                tbodyId = "CourseContent4";
+                courseId = "course4";
+                break;
+            case "type5":
+                tbodyId = "CourseContent5";
+                courseId = "course5";
+                break;
+        }
+        $("#"+courseId).empty();
+        $("#"+courseId).append(CourseHead);
+        $("#"+courseId+" >table >tbody").attr('id', tbodyId);
+        $.ajax({
+            url: "/student/Course-basic",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                type: $("#"+type).text()
+            },
+            success: function (data) {
+
+                if (data != null) {
+                    $("#"+tbodyId).empty();
+                    $.each(data, function (index, item) {
+                        var number = item.number;
+                        var cname = item.cname;
+                        var ename = item.ename;
+                        var semester = item.semester;
+                        var score = item.score;
+                        semester = semesters[semester];
+                        var CourseContent = "<tr>" +
+                            "<td>" + number + "</td>" +
+                            "<td>" + cname + "</td>" +
+                            "<td>" + ename + "</td>" +
+                            "<td>" + semester + "</td>" +
+                            "<td>" + score + "</td>" +
+                            "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
+                        $("#"+tbodyId).append(CourseContent);
+                    });
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+
+</html>
