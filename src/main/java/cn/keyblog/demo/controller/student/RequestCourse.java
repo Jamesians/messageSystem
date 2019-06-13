@@ -24,8 +24,8 @@ public class RequestCourse {
     @ResponseBody
     public List<Course> Course (HttpServletRequest request) {
         String type = request.getParameter("type");
-        System.out.println(type);
-        return allCourse.select(type);
+        List list = allCourse.select(type);
+        return list;
     }
 
 }

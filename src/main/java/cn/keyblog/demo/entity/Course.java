@@ -1,11 +1,11 @@
 package cn.keyblog.demo.entity;
 
 public class Course {
-    String number;
-    String cname;
-    String ename;
-    String score;
-    String semester;
+    private String number;
+    private String cname;
+    private String ename;
+    private String score;
+    private String semester;
 
     public String getNumber() {
         return number;

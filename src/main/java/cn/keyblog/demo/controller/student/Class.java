@@ -30,4 +30,5 @@ public class Class {
         String class_id = user.getClass_id();
         return classMsg.getClassStudent(class_id);
     }
+
 }
