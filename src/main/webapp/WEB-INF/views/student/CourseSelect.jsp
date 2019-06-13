@@ -162,6 +162,7 @@
         </div>
 
         <script>
+            var semester = ("大一上","大一下","大二上","大二下","大三上","大三下","大四上","大四下");
             $(document).ready(function(){
                  $.ajax({
                      url:"/Course-basic",
@@ -178,6 +179,7 @@
                                     var ename = data[index].ename;
                                     var semester = data[index].semester;
                                     var score = data[index].score;
+                                    semester = semesters[semester];
                                     var html = "<tr>"+
                                         "<td>"+number+"</td>"+
                                         "<td>"+cname+"</td>"+
@@ -186,13 +188,10 @@
                                         "<td>"+score+"</td>"+
                                         "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
                                         $("#typeCourse1").append(html);
-                                })
+                                });
                             }
                      }
-
-
-
-            })
+            })})
         </script>
     </body>
 
