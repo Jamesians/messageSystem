@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
     <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
     <style type="text/css">
+        body{
+            margin: 100px 10px 0px 80px;
+        }
         div.search {
             padding: 30px 0
         }

@@ -15,9 +15,7 @@
 <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
 <head>
     <style type = "text/css">
-        .t2{
-            padding: 100px;
-        }
+        body {overflow-x:hidden;}
     </style>
 </head>
 <body>
@@ -55,6 +53,26 @@
         });
         return false;
     })
+
+    //自适应样式
+    $("iframe").height(window.innerHeight-12);
+    $(window).resize(function(){
+        $("iframe").height(window.innerHeight-12);
+    });
+    var width=$(window).width();
+    if(width<1024){
+        $("iframe").contents().find("body").removeClass("font-size-12px").addClass("font-size-14px");
+    }else {
+        $("iframe").contents().find("body").removeClass("font-size-14px").addClass("font-size-12px");
+    }
+    $(window).resize(function(){
+        width=$(window).width();
+        if(width<1024){
+            $("iframe").contents().find("body").removeClass("font-size-12px").addClass("font-size-14px");
+        }else {
+            $("iframe").contents().find("body").removeClass("font-size-14px").addClass("font-size-12px");
+        }
+    });
 </script>
 </body>
 
