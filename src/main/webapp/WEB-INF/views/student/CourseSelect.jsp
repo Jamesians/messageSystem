@@ -146,7 +146,7 @@
         "                        </thead>\n" +
         "                        <tbody >\n" +
         "                        </tbody></table>";
-    var semesters = new Array("大一上", "大一下", "大二上", "大二下", "大三上", "大三下", "大四上", "大四下");
+    var semesters = new Array("大一上学期", "大一下学期", "大二上学期", "大二下学期", "大三上学期", "大三下学期", "大四上学期", "大四下学期");
     $(document).ready(function () {
         $.ajax({
             url: "/student/Course-basic",
@@ -175,7 +175,8 @@
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
                             "<td>" + score + "</td>" +
-                            "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
+                            "<td><button class=\"layui-btn layui-btn-normal selectBut\">未选</button></td>" +
+                            "</tr>"
                         // alert(CourseContent);
                         $("#CourseContent1").append(CourseContent);
                     });
@@ -236,14 +237,29 @@
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
                             "<td>" + score + "</td>" +
-                            "<td><button class=\"layui-btn layui-btn-normal\">未选</button></td>"
+                            "<td><button class=\"layui-btn layui-btn-normal selectBut\">未选</button></td>" +
+                            "</tr>"
                         $("#"+tbodyId).append(CourseContent);
                     });
                 }
             }
         });
-
     });
+    $("#course1,#course2,#course3,#course4,#course5").on("click",".selectBut",function () {
+        var sno =  ${sessionScope.user.uid};
+        var cno = $(this).parent().parent().children("td").eq(0).text();
+        alert(cno+","+sno);
+        $.ajax({
+            url:"/student/Course-select",
+            type:'post',
+            data:{cno:cno,sno:sno,seno:"1"},
+            success:function (data) {
+                alert("flag");
+                alert(data);
+            }
+        });
+    });
+
 </script>
 </body>
 

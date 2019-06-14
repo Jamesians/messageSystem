@@ -21,7 +21,7 @@ public class Info {
      * 转发个人信息页面
      * @return
      */
-    @RequestMapping("info")
+    @RequestMapping("/info")
     public String info(){
         return "student/info";
     }
