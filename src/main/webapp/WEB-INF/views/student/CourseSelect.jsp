@@ -15,7 +15,7 @@
     <title>CourseSelect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-    <script src="../js/courseSelectJs.js" type="text/javascript"></script>
+    <script src="../../../resource/js/courseSelectJs.js" type="text/javascript"></script>
     <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
     <link rel="styleSheet" type="text/css" href="../../../resource/css/CourseSelect.css" />
@@ -132,7 +132,7 @@
 </div>
 
 <script>
-    var CourseHead = "<table id=\"tab1\" class=\"layui-table\" text-align=\"center\">\n" +
+    var CourseHead = "<table id=\"tab1\"  class=\"layui-table\" text-align=\"center\">\n" +
         "                        <colgroup>\n" +
         "                            <col width=\"200\">\n" +
         "                            <col width=\"200\">\n" +
@@ -143,7 +143,7 @@
         "                        </colgroup>\n" +
         "                        <thead id=\"tableHead\">\n" +
         "                            <tr>\n" +
-        "                                <th>课程号</th>\n" +
+        "                                <th >课程号</th>\n" +
         "                                <th>课程名</th>\n" +
         "                                <th>英文名</th>\n" +
         "                                <th>学期</th>\n" +
@@ -160,7 +160,8 @@
             type: 'post',
             dataType: 'json',
             data: {
-                type: $("#type1").text()
+                type: $("#type1").text(),
+                sno:${sessionScope.user.uid}
             },
             success: function (data) {
                 $("#course1").append(CourseHead);
@@ -170,21 +171,23 @@
 
                     $("#CourseContent1").empty();
                     $.each(data, function (index, item) {
-                        var number = data[index].number;
-                        var cname = data[index].cname;
-                        var ename = data[index].ename;
-                        var semester = data[index].semester;
-                        var score = data[index].score;
+                        var number = item.number;
+                        var cname = item.cname;
+                        var ename = item.ename;
+                        var semester = item.semester;
+                        var score = item.score;
+                        var flag = item.flag;
                         semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
                             "<td>" + number + "</td>" +
                             "<td>" + cname + "</td>" +
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
-                            "<td>" + score + "</td>" +
-                            "<td><button class=\"layui-btn layui-btn-normal selectBut\">未选</button></td>" +
-                            "</tr>"
-                        // alert(CourseContent);
+                            "<td>" + score + "</td>";
+                        if(flag=="1")
+                            CourseContent += "<td><button class=\"layui-btn layui-btn-normal selectBut\">选课</button></td>" + "</tr>"
+                        else
+                            CourseContent += "<td><button class=\"layui-btn layui-btn-danger cancleBut\">退选</button></td>" + "</tr>"
                         $("#CourseContent1").append(CourseContent);
                     });
                 }
@@ -224,16 +227,19 @@
         $("#"+courseId).empty();
         $("#"+courseId).append(CourseHead);
         $("#"+courseId+" >table >tbody").attr('id', tbodyId);
+        //alert("nice");
         $.ajax({
             url: "/student/Course-basic",
             type: 'post',
             dataType: 'json',
             data: {
-                type: $("#"+type).text()
+                type: $("#"+type).text(),
+                sno:${sessionScope.user.uid}
             },
             success: function (data) {
 
                 if (data != null) {
+
                     $("#"+tbodyId).empty();
                     $.each(data, function (index, item) {
                         var number = item.number;
@@ -241,15 +247,18 @@
                         var ename = item.ename;
                         var semester = item.semester;
                         var score = item.score;
+                        var flag = item.flag;
                         semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
                             "<td>" + number + "</td>" +
                             "<td>" + cname + "</td>" +
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
-                            "<td>" + score + "</td>" +
-                            "<td><button class=\"layui-btn layui-btn-normal selectBut\">未选</button></td>" +
-                            "</tr>"
+                            "<td>" + score + "</td>";
+                        if(flag=="1")
+                            CourseContent += "<td><button class=\"layui-btn layui-btn-normal selectBut\">选课</button></td>" + "</tr>";
+                        else
+                            CourseContent += "<td><button class=\"layui-btn layui-btn-danger cancleBut\">退选</button></td>" + "</tr>";
                         $("#"+tbodyId).append(CourseContent);
                     });
                 }
@@ -266,12 +275,13 @@
             type:'post',
             data:{cno:cno,sno:sno},
             success:function (data) {
-                alert(data);
-
+                showTips(data,350,1.5);
             }
         });
         $(this).removeClass("layui-btn-normal");
         $(this).addClass("layui-btn layui-btn-danger");
+        $(this).removeClass("selectBut");
+        $(this).addClass("cancleBut");
         $(this).html("退课");
     });
 

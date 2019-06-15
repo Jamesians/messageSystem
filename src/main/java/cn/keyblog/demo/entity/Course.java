@@ -6,7 +6,14 @@ public class Course {
     private String ename;
     private String score;
     private String semester;
-
+    String flag = "1";
+    public String getFlag()
+    {
+        return flag;
+    }
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
     public String getNumber() {
         return number;
     }

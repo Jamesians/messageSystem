@@ -5,7 +5,6 @@ public class PlanStudyCourse {
     String course_id;
     String semester_id;
     String student_id;
-
     public String getId() {
         return id;
     }
