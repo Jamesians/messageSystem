@@ -15,9 +15,10 @@
     <title>CourseSelect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../js/courseSelectJs.js" type="text/javascript"></script>
     <script src="../../../resource/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../../../resource/layui/css/layui.css" />
-    <link type="text/css" rel="styleSheet" href="../../../resource/css/CourseSelect.css" />
+    <link rel="styleSheet" type="text/css" href="../../../resource/css/CourseSelect.css" />
     <style type="text/css">
         body{
             margin: 100px 10px 0px 80px;
@@ -65,13 +66,12 @@
             font-size: 16px;
             color: #F9F0DA;
         }
+
     </style>
     <script>
         //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function () {
             var element = layui.element;
-
-            //…
         });
     </script>
 </head>
@@ -107,6 +107,7 @@
         <button type="submit"></button>
     </form>
 </div>
+<div></div>
 <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" id="main_content">
     <ul class="layui-tab-title">
         <li class="layui-this" id="type1">公共基础</li>
@@ -255,38 +256,23 @@
             }
         });
     });
+
     $("#course1,#course2,#course3,#course4,#course5,#course6").on("click",".selectBut",function () {
         var sno =  ${sessionScope.user.uid};
         var cno = $(this).parent().parent().children("td").eq(0).text();
-        var seno;
         //alert(cno+","+sno);
-        $.ajax({
-            url:"/student/Course-AcNumber",
-            type:"post",
-            dataType:"json",
-            data:{number:cno},
-            success:function(data){
-                alert("1");
-                if(data==null)
-                {
-                    console.log("选课失败！");
-                    System.exit(0);
-                }
-                var obj = JSON.parse(data);
-                console.log(obj.semester);
-                seno = obj.semester;
-            }
-        })
-        alert(cno+","+sno+","+seno);
         $.ajax({
             url:"/student/Course-select",
             type:'post',
-            data:{cno:cno,sno:sno,seno:"1"},
+            data:{cno:cno,sno:sno},
             success:function (data) {
-                alert("flag");
                 alert(data);
+
             }
         });
+        $(this).removeClass("layui-btn-normal");
+        $(this).addClass("layui-btn layui-btn-danger");
+        $(this).html("退课");
     });
 
 </script>
