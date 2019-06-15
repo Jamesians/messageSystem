@@ -129,7 +129,7 @@
               type:"post",
               data:{name:$("#name").val(),password:$("#password").val()},
               success:function (data) {
-                  if(data==""||data=="wrong password!"||data=="no users found!"){
+                  if(data!="ok!"){
                       alert(data);
                   }else{
                       window.location.href='/student/index';

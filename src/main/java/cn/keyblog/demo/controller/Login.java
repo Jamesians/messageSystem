@@ -40,13 +40,13 @@ public class Login {
         if(name==null||pwd==null)   return "";
         User myuser = allUser.select(name);
         if(myuser==null){
-            return "no users found!";
+            return "用户不存在!";
         }else{
             if(pwd.equals(myuser.getPassword())){
                 request.getSession().setAttribute("user", myuser);
-                return myuser.getUsername();
+                return "ok!";
             }else{
-                return "wrong password!";
+                return "密码错误！";
             }
         }
     }
