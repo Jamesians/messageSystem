@@ -36,8 +36,6 @@ public class RequestCourse {
     @ResponseBody
     public Course Seno(HttpServletRequest request) {
         String number = request.getParameter("number");
-        //Course t = allCourse.selectSeno(number);
-        //System.out.println(t.getSemester());
         return allCourse.selectSeno(number);
     }
 }
