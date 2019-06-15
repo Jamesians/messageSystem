@@ -22,7 +22,7 @@ public class RequestPlanStudyCourse {
         String student_id = request.getParameter("sno");
         String semester_id = request.getParameter("seno");
        // System.out.println(course_id);
-        PlanCourse.insert("1",course_id,student_id,semester_id);
+        PlanCourse.insert(course_id,student_id,semester_id);
         return "选课成功";
     }
 }
