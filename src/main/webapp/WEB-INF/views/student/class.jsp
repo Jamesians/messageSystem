@@ -21,6 +21,9 @@
     <style>
         .site-doc-icon li{width: 222px;}
         .site-doc-icon li .layui-anim{width: 150px; height: 150px; line-height: 150px; margin: 0 auto 10px; text-align: center; background-color: #009688; cursor: pointer; color: #fff; border-radius: 50%;}
+        body{
+            margin: 100px 10px 0px 80px;
+        }
         * {
             color: black;
             box-sizing: border-box;

@@ -6,6 +6,9 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
     <title></title>
     <style type="text/css">
+      body{
+        margin: 100px 10px 0px 80px;
+      }
       table{
         font-family:Georgia,serif;
         font-style:normal;
