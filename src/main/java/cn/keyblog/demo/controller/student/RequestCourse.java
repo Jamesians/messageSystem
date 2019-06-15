@@ -27,5 +27,17 @@ public class RequestCourse {
         List list = allCourse.select(type);
         return list;
     }
-
+    /**
+     * 获取课程的学期号
+     * @param request 参数
+     * @return 学期号
+    * */
+    @RequestMapping("/Course-AcNumber")
+    @ResponseBody
+    public Course Seno(HttpServletRequest request) {
+        String number = request.getParameter("number");
+        //Course t = allCourse.selectSeno(number);
+        //System.out.println(t.getSemester());
+        return allCourse.selectSeno(number);
+    }
 }

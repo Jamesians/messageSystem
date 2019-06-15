@@ -18,11 +18,11 @@ public class RequestPlanStudyCourse {
     @RequestMapping("/Course-select")
     @ResponseBody
     public String Course (HttpServletRequest request) {
-        int course_id = Integer.valueOf(request.getParameter("cno"));
-        int studnet_id = Integer.valueOf(request.getParameter("sno"));
-        int semester_id = Integer.valueOf(request.getParameter("seno"));
+        String course_id = request.getParameter("cno");
+        String student_id = request.getParameter("sno");
+        String semester_id = request.getParameter("seno");
        // System.out.println(course_id);
-        PlanCourse.insert(course_id,studnet_id,semester_id);
+        PlanCourse.insert("1",course_id,student_id,semester_id);
         return "选课成功";
     }
 }

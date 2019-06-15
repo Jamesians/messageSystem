@@ -110,7 +110,9 @@
         <li id="type2">学科基础</li>
         <li id="type3">专业主干</li>
         <li id="type4">专业任选</li>
-        <li id="type5">公共选修</li>
+        <li id="type5">专业限选</li>
+        <li id="type6">公共选修</li>
+
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show" id="course1">
@@ -121,6 +123,7 @@
         <div class="layui-tab-item" id="course3">内容3</div>
         <div class="layui-tab-item" id="course4">内容4</div>
         <div class="layui-tab-item" id="course5">内容5</div>
+        <div class="layui-tab-item" id="course6">内容5</div>
     </div>
 </div>
 
@@ -168,7 +171,7 @@
                         var ename = data[index].ename;
                         var semester = data[index].semester;
                         var score = data[index].score;
-                        semester = semesters[semester];
+                        semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
                             "<td>" + number + "</td>" +
                             "<td>" + cname + "</td>" +
@@ -184,7 +187,7 @@
             }
         })
     })
-    $("#type1,#type2,#type3,#type4,#type5").click(function (e) {
+    $("#type1,#type2,#type3,#type4,#type5,#type6").click(function (e) {
         var type = e.target.id;
         var tbodyId;
         var courseId;
@@ -209,6 +212,10 @@
                 tbodyId = "CourseContent5";
                 courseId = "course5";
                 break;
+            case "type6":
+                tbodyId = "CourseContent6";
+                courseId = "course6";
+                break;
         }
         $("#"+courseId).empty();
         $("#"+courseId).append(CourseHead);
@@ -230,7 +237,7 @@
                         var ename = item.ename;
                         var semester = item.semester;
                         var score = item.score;
-                        semester = semesters[semester];
+                        semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
                             "<td>" + number + "</td>" +
                             "<td>" + cname + "</td>" +
@@ -245,10 +252,29 @@
             }
         });
     });
-    $("#course1,#course2,#course3,#course4,#course5").on("click",".selectBut",function () {
+    $("#course1,#course2,#course3,#course4,#course5,#course6").on("click",".selectBut",function () {
         var sno =  ${sessionScope.user.uid};
         var cno = $(this).parent().parent().children("td").eq(0).text();
-        alert(cno+","+sno);
+        var seno;
+        //alert(cno+","+sno);
+        $.ajax({
+            url:"/student/Course-AcNumber",
+            type:"post",
+            dataType:"json",
+            data:{number:cno},
+            success:function(data){
+                alert("1");
+                if(data==null)
+                {
+                    console.log("选课失败！");
+                    System.exit(0);
+                }
+                var obj = JSON.parse(data);
+                console.log(obj.semester);
+                seno = obj.semester;
+            }
+        })
+        alert(cno+","+sno+","+seno);
         $.ajax({
             url:"/student/Course-select",
             type:'post',
