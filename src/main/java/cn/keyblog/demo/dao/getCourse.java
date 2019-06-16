@@ -9,7 +9,7 @@ import java.util.List;
 public interface getCourse {
 
     /**
-     * 获取k课程类型为type的所有课程
+     * 获取课程类型为type的所有课程
      * @param type
      * @return 课程信息
      */

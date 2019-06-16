@@ -95,9 +95,9 @@
     </thead>
     <tbody>
     <tr>
-        <td>30</td>
-        <td>0</td>
-        <td>0</td>
+        <td id = "totalScore">30</td>
+        <td id = "restScore">0</td>
+        <td id = "selectScore">0</td>
     </tr>
     </tbody>
 </table>
@@ -321,6 +321,7 @@
         $(this).html("选课");
         $(this).parent().parent().children("td").eq(6).html(size+1);
     });
+
 </script>
 </body>
 

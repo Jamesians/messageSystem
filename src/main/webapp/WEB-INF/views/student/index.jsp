@@ -31,7 +31,7 @@
     <div class = "sidemenu">
         <div class="menu">
             <div class="menuItem uno">1<a target="iframe_a" href="/student/info">个人信息</a></div>
-            <div class="menuItem dos">2<a target="iframe_a">已选课程</a></div>
+            <div class="menuItem dos">2<a target="iframe_a" href = "/student/CourseSelected">已选课程</a></div>
             <div class="menuItem tres">3<a target="iframe_a" href="/student/CourseSelect">选修课程</a></div>
             <div class="menuItem cuatro">4<a target="iframe_a" href="/student/class">班级人员</a></div>
             <div class="menuItem cinco">5<a target="iframe_a">期末成绩</a></div>

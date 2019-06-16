@@ -18,7 +18,6 @@ public class Class {
     //加载数据库接口
     @Resource
     ClassMsg classMsg;
-
     /**
      * 转发学生班级页面
      * @return json
@@ -27,7 +26,12 @@ public class Class {
     public String myClass(){
         return "/student/class";
     }
-
+    /**
+     * 转发已选课程界面
+     * @return json
+     * */
+    @RequestMapping("/CourseSelected")
+    public String myCourseSelected(){return "/student/CourseSelected";}
     /**
      *显示当前学生对应班级学生
      * @param request
