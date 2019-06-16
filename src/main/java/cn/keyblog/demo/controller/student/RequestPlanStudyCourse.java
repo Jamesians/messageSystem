@@ -31,4 +31,20 @@ public class RequestPlanStudyCourse {
         PlanCourse.insert(course_id,student_id,semester_id);
         return "选课成功";
     }
+    /**
+     * 处理退选信息
+     * @param request 参数
+     * return 返回处理信息
+     */
+    @RequestMapping("/Course-cancle")
+    @ResponseBody
+    public String cancle(HttpServletRequest request)
+    {
+
+        String cno = request.getParameter("cno");
+        String sno = request.getParameter("sno");
+        PlanCourse.cancleCourse(cno,sno);
+        return "退课成功";
+
+    }
 }

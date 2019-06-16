@@ -52,11 +52,17 @@ public class RequestCourse {
      * 获取课程的学期号
      * @param request 参数
      * @return 学期号
-    * */
+    **/
     @RequestMapping("/Course-AcNumber")
     @ResponseBody
     public Course Seno(HttpServletRequest request) {
         String number = request.getParameter("number");
         return allCourse.selectSeno(number);
     }
+    /**
+     * 获取已选课程学分
+     *
+     *
+     *
+     * */
 }

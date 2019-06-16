@@ -278,13 +278,29 @@
                 showTips(data,350,1.5);
             }
         });
-        $(this).removeClass("layui-btn-normal");
+        $(this).removeClass("layui-btn layui-btn-normal");
         $(this).addClass("layui-btn layui-btn-danger");
         $(this).removeClass("selectBut");
         $(this).addClass("cancleBut");
         $(this).html("退课");
     });
-
+    $("#course1,#course2,#course3,#course4,#course5,#course6").on("click",".cancleBut",function () {
+        var sno = ${sessionScope.user.uid};
+        var cno = $(this).parent().parent().children("td").eq(0).text();
+        $.ajax({
+            url:"/student/Course-cancle",
+            type:"post",
+            data:{cno:cno,sno:sno},
+            success:function (data) {
+                showTips(data,350,1.5);
+            }
+        });
+        $(this).removeClass("layui layui-btn-danger");
+        $(this).addClass("layui-btn layui-btn-normal");
+        $(this).removeClass("cancleBut");
+        $(this).addClass("selectBut");
+        $(this).html("选课");
+    });
 </script>
 </body>
 

@@ -1,10 +1,7 @@
 package cn.keyblog.demo.dao;
 
 import cn.keyblog.demo.entity.PlanStudyCourse;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -26,4 +23,11 @@ public interface GetPlanStudyCourse {
      * */
     @Select("select * from plan_study_course where student_id=#{student_id}")
     public List<PlanStudyCourse> select(@Param("student_id")String student_id);
+    /**
+     * 从plan_study_course删除选课记录
+     * @param course_id
+     * @param student_id
+     */
+    @Delete("delete from plan_study_course where course_id=#{course_id} and student_id=#{student_id}")
+    public void cancleCourse(@Param("course_id")String course_id,@Param("student_id")String student_id);
 }
