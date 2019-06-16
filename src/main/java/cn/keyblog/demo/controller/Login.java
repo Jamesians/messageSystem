@@ -51,7 +51,7 @@ public class Login {
                 request.getSession().setAttribute("user", myuser);
                 return "ok!";
             }else{
-                return "密码错误！";
+                return "密码错误！123";
             }
         }
     }
