@@ -13,7 +13,7 @@ public interface getCourse {
      * @param type
      * @return 课程信息
      */
-    @Select("select number,cname,ename,score,semester from mycourse where name=#{name};")
+    @Select("select * from mycourse where name=#{name};")
     public List<Course> select(@Param(value="name") String type);
 
     /**
@@ -21,7 +21,15 @@ public interface getCourse {
     *@param number
     * @return 学期号
     * */
-    @Select("select number,cname,ename,score,semester from mycourse where number=#{number}")
+    @Select("select * from mycourse where number=#{number}")
     public Course selectSeno(@Param("number")String number);
+    /**
+     * 获取已选学分
+     * @param student_id
+     * return 已选学分
+     * */
+    @Select("select * from mycourse where mycourse.number in (" +
+            "select course_id from plan_study_course where plan_study_course.student_id=#{student_id})")
+    public List<Course> courseSelected(@Param("student_id")String student_id);
 
 }

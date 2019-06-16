@@ -45,7 +45,7 @@ public class RequestCourse {
             if(t!=null)
                 t.setFlag("2");
         }
-        System.out.println(list.size());
+        //System.out.println(list.size());
         return list;
     }
     /**
@@ -61,8 +61,16 @@ public class RequestCourse {
     }
     /**
      * 获取已选课程学分
-     *
-     *
-     *
+     * @param request 参数
+     * @return 已选学分
      * */
+    public int scoreSelected(HttpServletRequest request)
+    {
+        String sno = request.getParameter("sno");
+        List<Course> list = allCourse.courseSelected(sno);
+        int score = 0;
+        for(Course c:list)
+            score += Integer.valueOf(c.getScore());
+        return score;
+    }
 }

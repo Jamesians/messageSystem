@@ -140,6 +140,8 @@
         "                            <col width=\"200\">\n" +
         "                            <col width=\"200\">\n" +
         "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
+        "                            <col width=\"200\">\n" +
         "                        </colgroup>\n" +
         "                        <thead id=\"tableHead\">\n" +
         "                            <tr>\n" +
@@ -148,6 +150,8 @@
         "                                <th>英文名</th>\n" +
         "                                <th>学期</th>\n" +
         "                                <th>学分</th>\n" +
+        "                                <th>课程容量</th>\n" +
+        "                                <th>剩余容量</th>\n" +
         "                                <th>选课</th>\n" +
         "                            </tr>\n" +
         "                        </thead>\n" +
@@ -166,9 +170,7 @@
             success: function (data) {
                 $("#course1").append(CourseHead);
                 $("#course1 >table >tbody").attr('id', 'CourseContent1');
-
                 if (data != null) {
-
                     $("#CourseContent1").empty();
                     $.each(data, function (index, item) {
                         var number = item.number;
@@ -176,6 +178,8 @@
                         var ename = item.ename;
                         var semester = item.semester;
                         var score = item.score;
+                        var max_class_size = item.max_class_size;
+                        var rest_size = item.rest_size;
                         var flag = item.flag;
                         semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
@@ -183,7 +187,9 @@
                             "<td>" + cname + "</td>" +
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
-                            "<td>" + score + "</td>";
+                            "<td>" + score + "</td>"+
+                            "<td>" + max_class_size+ "</td>"+
+                            "<td>" + rest_size + "</td>";
                         if(flag=="1")
                             CourseContent += "<td><button class=\"layui-btn layui-btn-normal selectBut\">选课</button></td>" + "</tr>"
                         else
@@ -247,6 +253,8 @@
                         var ename = item.ename;
                         var semester = item.semester;
                         var score = item.score;
+                        var max_class_size = item.max_class_size;
+                        var rest_size = item.rest_size;
                         var flag = item.flag;
                         semester = semesters[semester-1];
                         var CourseContent = "<tr>" +
@@ -254,7 +262,9 @@
                             "<td>" + cname + "</td>" +
                             "<td>" + ename + "</td>" +
                             "<td>" + semester + "</td>" +
-                            "<td>" + score + "</td>";
+                            "<td>" + score + "</td>" +
+                            "<td>" + max_class_size+ "</td>"+
+                            "<td>" + rest_size + "</td>";
                         if(flag=="1")
                             CourseContent += "<td><button class=\"layui-btn layui-btn-normal selectBut\">选课</button></td>" + "</tr>";
                         else
@@ -269,7 +279,13 @@
     $("#course1,#course2,#course3,#course4,#course5,#course6").on("click",".selectBut",function () {
         var sno =  ${sessionScope.user.uid};
         var cno = $(this).parent().parent().children("td").eq(0).text();
-        //alert(cno+","+sno);
+        var size = $(this).parent().parent().children("td").eq(6).text();
+        size = parseInt(size);
+        if(size<=0)
+        {
+            alert("课程没有剩余容量，非常抱歉");
+            return;
+        }
         $.ajax({
             url:"/student/Course-select",
             type:'post',
@@ -283,10 +299,13 @@
         $(this).removeClass("selectBut");
         $(this).addClass("cancleBut");
         $(this).html("退课");
+        $(this).parent().parent().children("td").eq(6).html(size-1);
     });
     $("#course1,#course2,#course3,#course4,#course5,#course6").on("click",".cancleBut",function () {
         var sno = ${sessionScope.user.uid};
         var cno = $(this).parent().parent().children("td").eq(0).text();
+        var size = $(this).parent().parent().children("td").eq(6).text();
+        size = parseInt(size);
         $.ajax({
             url:"/student/Course-cancle",
             type:"post",
@@ -300,6 +319,7 @@
         $(this).removeClass("cancleBut");
         $(this).addClass("selectBut");
         $(this).html("选课");
+        $(this).parent().parent().children("td").eq(6).html(size+1);
     });
 </script>
 </body>
