@@ -37,8 +37,13 @@ public class Login {
     public String login (HttpServletRequest request){
         String name = request.getParameter("name");
         String pwd = request.getParameter("password");
+        String code = request.getParameter("code");
         if(name==null||pwd==null)   return "";
-        User myuser = allUser.select(name);
+        User myuser = null;
+        if(code.equals("1"))
+            myuser = allUser.selectStudent(name);
+        else if(code.equals("2"))
+            myuser = allUser.selectTeacher(name);
         if(myuser==null){
             return "用户不存在!";
         }else{

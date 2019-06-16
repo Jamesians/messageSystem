@@ -38,7 +38,7 @@ public class register {
         if(name==null||pwd==null||username==null) {return "error!";}
         if(name.equals("")||pwd.equals("")||username.equals(""))   {return "error!";}
 
-        if(allUser.select(name)==null){
+        if(allUser.selectStudent(name)==null){
             allUser.insert(String.valueOf(UUID.randomUUID()),name,pwd,username);
             return "success!";
         }else{

@@ -15,14 +15,24 @@ import java.util.List;
 @RequestMapping("/student")
 public class Class {
 
+    //加载数据库接口
     @Resource
     ClassMsg classMsg;
 
+    /**
+     * 转发学生班级页面
+     * @return json
+     */
     @RequestMapping("/class")
     public String myClass(){
         return "/student/class";
     }
 
+    /**
+     *显示当前学生对应班级学生
+     * @param request
+     * @return json
+     */
     @RequestMapping("/classStudent")
     @ResponseBody
     public List<ClassStudent> classAll(HttpServletRequest request){

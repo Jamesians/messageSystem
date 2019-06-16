@@ -108,8 +108,9 @@
        <h1>教务管理系统</h1>
        <div>
           <select id="co">
-            <option  value ="老师">Teacher</option>
-            <option  value ="S "  selected = "selected" >Student</option>
+              <option  value ="1"  selected = "selected" >Student</option>
+              <option  value ="2">Teacher</option>
+
           </select>
        </div>
        <input id="name" placeholder="Username" type="text" required="">
@@ -119,20 +120,15 @@
   </form>
   <script>
       $(".submit").click(function () {
-
-          if($("#co").val()=='老师'){
-              alert('教师页面暂未开通！');
-              return false;
-          }
           $.ajax({
               url:"/login-M",
               type:"post",
-              data:{name:$("#name").val(),password:$("#password").val()},
+              data:{name:$("#name").val(),password:$("#password").val(),code:$("#co").val()},
               success:function (data) {
                   if(data!="ok!"){
                       alert(data);
                   }else{
-                      window.location.href='/student/index';
+                      window.location.href='/';
                   }
               }
           });

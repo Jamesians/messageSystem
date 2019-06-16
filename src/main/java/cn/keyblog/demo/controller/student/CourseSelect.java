@@ -16,10 +16,4 @@ public class CourseSelect {
     public String courseSelect(){
         return "student/CourseSelect";
     }
-
-
-    @RequestMapping("/11")
-    public String courseSelect1(){
-        return "123";
-    }
 }

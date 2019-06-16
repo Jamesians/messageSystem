@@ -9,13 +9,23 @@ import java.util.List;
 public interface AllUser {
 
     /**
-     * 获取字段name为name的数据
+     * 获取字段name为name的学生数据
      * @param name
      * @return
      */
-    @Select("select b.scode,a.name,a.password,a.username,b.name as uname,a.userid as uid,b.gender,b.photo,b.class_id from `user` as a,student as b\n" +
-            "where a.userid=b.scode and a.name=#{name}")
-    public User select(@Param("name") String name);
+    @Select("select b.scode,a.name,a.password,a.username,b.name as uname,a.userid as uid,b.gender,b.photo,b.class_id,code from `user` as a,student as b\n" +
+            "where a.userid=b.scode and a.name=#{name} and code='1'")
+    public User selectStudent(@Param("name") String name);
+
+
+    /**
+     * 查询学生登录信息
+     * @param name
+     * @return
+     */
+    @Select("select b.tcode as scode,a.name,a.password,a.username,b.name as uname,a.userid as uid,b.gender,b.photo,code \n" +
+            "from user as a,teacher as b where a.userid=b.tcode and a.name=#{name} and code='2'")
+    public User selectTeacher(@Param("name") String name);
 
     /**
      * 获取user表全部数据

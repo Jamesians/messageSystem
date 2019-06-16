@@ -9,7 +9,17 @@ public class User {
     private String uname;
     private String uid;
     private String gender;
+    private String code;
     private String photo;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     private String class_id;
 
     public String getScode() {
