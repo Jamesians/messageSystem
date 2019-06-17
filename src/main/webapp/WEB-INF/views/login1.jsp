@@ -83,7 +83,7 @@
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
   }
   select{
-    border:solid 1px ;
+    border:solid 1px;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
     padding-right:14px;
     width: 200px;
@@ -116,7 +116,7 @@
        <input id="name" placeholder="Username" type="text" required="">
        <input id="password" placeholder="Password" type="password" required="">
        <button class="submit">登陆</button>
-      <button class=""><a href="/register">注册</a></button>
+       <button class="">注册</button>
   </form>
   <script>
       $(".submit").click(function () {
