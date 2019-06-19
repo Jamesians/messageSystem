@@ -18,7 +18,7 @@ public class MainPage {
         User user = (User)request.getSession().getAttribute("user");
 
         if(user.getCode().equals("1"))
-            return "student/mainpag";
+            return "student/index";
         else
             return "teacher/mainpag";
     }
