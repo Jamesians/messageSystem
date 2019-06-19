@@ -100,6 +100,17 @@
     font-size: 15px;
   }
 
+  html,body{
+      width:100%;
+      height:100%
+  }
+  body{
+      font-family: "华文细黑";
+      background:url("images/bg_bc.jpg") no-repeat;
+      background-size: 100%;
+  }
+
+
   </style>
       <link rel="stylesheet" href="style.css">
 </head>

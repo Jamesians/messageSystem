@@ -51,7 +51,7 @@
                     <a href="javascript:;">选课系统</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">已选课程</a></dd>
-                        <dd><a target="iframe_a" href="choose_course">选择课程</a></dd>
+                        <dd><a target="iframe_a" href="/student/chosecourse">选择课程</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

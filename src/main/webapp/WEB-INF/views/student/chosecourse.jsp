@@ -329,6 +329,15 @@ To change this template use File | Settings | File Templates.
                 showTips(data,350,1.5);
             }
         });
+        $.ajax(
+            {
+                url: "/student/Course-select1",
+                type: 'post',
+                data: {cno: cno},
+                success: function (data) {
+                    showTips(data, 350, 1.5);
+                }
+            });
         $(this).removeClass("layui-btn layui-btn-normal");
         $(this).addClass("layui-btn layui-btn-danger");
         $(this).removeClass("selectBut");
@@ -357,6 +366,15 @@ To change this template use File | Settings | File Templates.
                 showTips(data,350,1.5);
             }
         });
+        $.ajax(
+            {
+                url: "/student/Course-cancle1",
+                type: 'post',
+                data: {cno: cno},
+                success: function (data) {
+                    showTips(data, 350, 1.5);
+                }
+            });
         $(this).removeClass("layui layui-btn-danger");
         $(this).addClass("layui-btn layui-btn-normal");
         $(this).removeClass("cancleBut");

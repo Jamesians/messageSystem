@@ -2,10 +2,7 @@ package cn.keyblog.demo.controller;
 
 import cn.keyblog.demo.dao.ChoseCourse;
 import cn.keyblog.demo.entity.Chosecourse;
-import cn.keyblog.demo.entity.Chosedcourse;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,8 +29,27 @@ public class chosecoure {
 
     @RequestMapping("/chosecourse-N")
     @ResponseBody
-    public  List<Chosedcourse> score(HttpServletRequest request){
+    public  List<Chosecourse> score(HttpServletRequest request){
         return choseCourse.score(request.getParameter("sno"));
     }
-
+    @RequestMapping("/Course-select")
+    @ResponseBody
+    public  ChoseCourse up1(HttpServletRequest request){
+        return choseCourse.update1(request.getParameter("sno"),request.getParameter("cno"));
+    }
+    @RequestMapping("/Course-cancle")
+    @ResponseBody
+    public  ChoseCourse up2(HttpServletRequest request){
+        return choseCourse.update2(request.getParameter("sno"),request.getParameter("cno"));
+    }
+    @RequestMapping("/Course-select1")
+    @ResponseBody
+    public  ChoseCourse up3(HttpServletRequest request){
+        return choseCourse.update3(request.getParameter("cno"));
+    }
+    @RequestMapping("/Course-cancle1")
+    @ResponseBody
+    public  ChoseCourse up4(HttpServletRequest request){
+        return choseCourse.update4(request.getParameter("cno"));
+    }
 }
