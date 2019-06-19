@@ -13,7 +13,6 @@ public interface ChoseCourse {
  @Select("select * from student_chosed\n"+"where student_chosed.student_id = #{sno}")
     public  List<Chosedcourse> score(@Param("sno") String sno);
 
- @Insert("insert into student_chosed(studnet_id,course_id,score,semester) values(#{sno},#{cno},#{score},#semester)"
- )
-         public  Chosedcourse inser(@Param());
+ @Insert("insert into student_chosed(studnet_id,course_id,score,semester) values(#{sno},#{cno},#{score},#semester)")
+         public  Chosedcourse inser(@Param("sno") String sno);
 }
