@@ -6,6 +6,15 @@
   <title>登录-教务管理系统</title>
   <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
   <style type="text/css">
+      html,body{
+          width:100%;
+          height:100%
+      }
+      body{
+          font-family: "华文细黑";
+          background:url("images/bg_bc.jpg") no-repeat;
+          background-size: 100%;
+      }
   h1, input::-webkit-input-placeholder, button {
     font-family: 'roboto', sans-serif;
     -webkit-transition: all 0.3s ease-in-out;
@@ -98,12 +107,15 @@
     color: #7f8c8d;
     font-size: 15px;
   }
-
+      a{
+          text-decoration: none;
+          color: white;
+      }
   </style>
       <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body >
   <form>
        <h1>教务管理系统</h1>
        <div>
@@ -116,7 +128,7 @@
        <input id="name" placeholder="Username" type="text" required="">
        <input id="password" placeholder="Password" type="password" required="">
        <button class="submit">登陆</button>
-      <button class=""><a href="/register">注册</a></button>
+      <button class=""><a href="/student/chosecourse" >注册</a></button>
   </form>
   <script>
       $(".submit").click(function () {
