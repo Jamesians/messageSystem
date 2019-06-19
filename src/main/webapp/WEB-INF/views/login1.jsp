@@ -12,6 +12,7 @@
     transition: all 0.3s ease-in-out;
   }
 
+
   h1 {
     height: 70px;
     width: 100%;
@@ -26,7 +27,7 @@
   form {
     box-sizing: border-box;
     width: 260px;
-    margin:200px auto;
+    margin:100px auto;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
     padding-bottom: 10px;
     border-radius: 4px;
