@@ -51,7 +51,7 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
   table.render({
     elem: '#demo'
     ,height: 420
-    ,url: '/demo/table/user/' //数据接口
+    ,url: '/student/chosecourse-M' //数据接口
     ,title: '用户表'
     ,page: true //开启分页
     ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
