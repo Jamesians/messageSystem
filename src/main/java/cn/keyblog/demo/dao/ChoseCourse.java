@@ -9,7 +9,7 @@ public interface ChoseCourse {
     @Select("select * from student_course \n"+"where student_course.userid = #{sno} ")
     public List<Chosecourse> all(@Param("sno") String sno);
     //查已经选了的课程
- @Select("select * from student_chose\n"+"where student_chose.student_id = #{sno}")
+ @Select("select * from student_chose\n"+"where student_chose.student_id = #{sno} and flag = 2")
     public  List<Chosecourse> score(@Param("sno") String sno);
 
  @Update("update student_chose as a set a.flag = 2 where a.course_id = #{cno} and a.student_id = #{sno}")

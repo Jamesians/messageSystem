@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <title>课程成绩管理系统</title>
-    <link rel="stylesheet" href="layui.css">
+    <link rel="stylesheet" href="../layui.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -33,7 +34,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">我的信息</a>
                     <dl class="layui-nav-child">
-                        <dd><a target="iframe_a" href="">基本信息</a></dd>
+                        <dd><a target="iframe_a" href="/student/mes">基本信息</a></dd>
                         <dd><a target="iframe_a" href="change_password">修改密码</a></dd>
                         <dd><a href="">课程成绩</a></dd>
                     </dl>
