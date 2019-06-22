@@ -42,7 +42,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">公共服务</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">培养方案</a></dd>
+                        <dd><a target="iframe_a" href="/student/Educationpro">培养方案</a></dd>
                         <dd><a href="javascript:;">课程信息</a></dd>
                         <dd><a href="">开课安排</a></dd>
                         <dd><a href="">期末考试成绩查询</a></dd>
