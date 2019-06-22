@@ -324,20 +324,21 @@ To change this template use File | Settings | File Templates.
         $.ajax({
             url:"/student/Course-select",
             type:'post',
+            dataType: 'json',
             data:{cno:cno,sno:sno},
             success:function (data) {
-                showTips(data,350,1.5);
+               size=parseInt(data.rest_num);
             }
         });
-        $.ajax(
-            {
-                url: "/student/Course-select1",
-                type: 'post',
-                data: {cno: cno},
-                success: function (data) {
-                    showTips(data, 350, 1.5);
-                }
-            });
+        // $.ajax(
+        //     {
+        //         url: "/student/Course-select1",
+        //         type: 'post',
+        //         data: {cno: cno},
+        //         success: function (data) {
+        //             showTips(data, 350, 1.5);
+        //         }
+        //     });
         $(this).removeClass("layui-btn layui-btn-normal");
         $(this).addClass("layui-btn layui-btn-danger");
         $(this).removeClass("selectBut");
@@ -363,10 +364,10 @@ To change this template use File | Settings | File Templates.
             type:"post",
             data:{cno:cno,sno:sno},
             success:function (data) {
-                showTips(data,350,1.5);
+
             }
         });
-        $.ajax(
+      /*  $.ajax(
             {
                 url: "/student/Course-cancle1",
                 type: 'post',
@@ -374,7 +375,7 @@ To change this template use File | Settings | File Templates.
                 success: function (data) {
                     showTips(data, 350, 1.5);
                 }
-            });
+            });*/
         $(this).removeClass("layui layui-btn-danger");
         $(this).addClass("layui-btn layui-btn-normal");
         $(this).removeClass("cancleBut");

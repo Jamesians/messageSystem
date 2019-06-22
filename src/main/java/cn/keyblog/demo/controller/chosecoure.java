@@ -34,15 +34,17 @@ public class chosecoure {
     }
     @RequestMapping("/Course-select")
     @ResponseBody
-    public  ChoseCourse up1(HttpServletRequest request){
-        return choseCourse.update1(request.getParameter("sno"),request.getParameter("cno"));
+    public  Chosecourse up1(HttpServletRequest request){
+         choseCourse.update1(request.getParameter("sno"),request.getParameter("cno"));
+         return  choseCourse.update3(request.getParameter("cno"));
     }
     @RequestMapping("/Course-cancle")
     @ResponseBody
-    public  ChoseCourse up2(HttpServletRequest request){
-        return choseCourse.update2(request.getParameter("sno"),request.getParameter("cno"));
+    public  Chosecourse up2(HttpServletRequest request){
+         choseCourse.update2(request.getParameter("sno"),request.getParameter("cno"));
+         return  choseCourse.update4(request.getParameter("cno"));
     }
-    @RequestMapping("/Course-select1")
+    /*@RequestMapping("/Course-select1")
     @ResponseBody
     public  ChoseCourse up3(HttpServletRequest request){
         return choseCourse.update3(request.getParameter("cno"));
@@ -51,5 +53,5 @@ public class chosecoure {
     @ResponseBody
     public  ChoseCourse up4(HttpServletRequest request){
         return choseCourse.update4(request.getParameter("cno"));
-    }
+    }*/
 }

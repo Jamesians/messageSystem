@@ -13,14 +13,14 @@ public interface ChoseCourse {
     public  List<Chosecourse> score(@Param("sno") String sno);
 
  @Update("update student_chose as a set a.flag = 2 where a.course_id = #{cno} and a.student_id = #{sno}")
-    public ChoseCourse update1 (@Param("sno") String sno,@Param("cno") String cno);
+    public void update1 (@Param("sno") String sno,@Param("cno") String cno);
 
  @Update("update student_chose as a set a.flag = 1 where a.course_id = #{cno} and a.student_id = #{sno}")
-    public ChoseCourse update2 (@Param("sno") String sno,@Param("cno") String cno);
-@Update("update course_class as a set a.rest_num -= 1 where a.course_id = #{cno}")
-    public ChoseCourse update3 (@Param("cno") String cno);
-@Update("update course_class as a set a.rest_num += 1 where a.course_id = #{cno}")
-    public ChoseCourse update4 (@Param("cno") String cno);
+    public void update2 (@Param("sno") String sno,@Param("cno") String cno);
+@Update("update course_class as a set a.rest_num = a.rest_num-1 where a.course_id = #{cno}")
+    public Chosecourse update3 (@Param("cno") String cno);
+@Update("update course_class as a set a.rest_num =a.rest_num+1 where a.course_id = #{cno}")
+    public Chosecourse update4 (@Param("cno") String cno);
    // @Update("update student_chose as a set a.flag = 2 where a.course_id = #{cno} and a.student_id = #{sno}")
     //public ChoseCourse update3 (@Param("cno") String cno);
 
