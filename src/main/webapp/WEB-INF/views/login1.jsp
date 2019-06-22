@@ -106,7 +106,7 @@
   }
   body{
       font-family: "华文细黑";
-      background:url("images/bg_bc.jpg") no-repeat;
+      background:url("../../images/bg_bc.jpg") no-repeat;
       background-size: 100%;
   }
 

@@ -6,7 +6,6 @@ public class Educationpro {
     private String objective;
     private String specification;
     private String duration;
-
     public String getId() {
         return id;
     }
@@ -47,13 +46,7 @@ public class Educationpro {
         this.duration = duration;
     }
 
-    public String getDegree() {
-        return degree;
-    }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
 
     public String getMin_credit() {
         return min_credit;
@@ -77,6 +70,15 @@ public class Educationpro {
 
     public void setMajor_id(String major_id) {
         this.major_id = major_id;
+    }
+
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 
     private String degree;

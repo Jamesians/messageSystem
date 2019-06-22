@@ -13,7 +13,7 @@ public interface AllUser {
      * @param name
      * @return
      */
-    @Select("select b.scode,a.name,a.password,a.username,b.name as uname,a.userid as uid,b.gender,b.photo,b.class_id,code from `user` as a,student as b\n" +
+    @Select("select b.photo,b.scode,a.name,a.password,a.username,b.name as uname,a.userid as uid,b.gender,b.photo,b.class_id,code from `user` as a,student as b\n" +
             "where a.userid=b.scode and a.name=#{name} and code='1'")
     public User selectStudent(@Param("name") String name);
 

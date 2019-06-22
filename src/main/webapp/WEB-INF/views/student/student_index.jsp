@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <title>课程成绩管理系统</title>
-    <link rel="stylesheet" href="../layui.css">
+    <link rel="stylesheet" href="../../../layui/css/layui.css">
+    <style>
+        #student_index_p1{
+            width:50px;
+            height:50px;
+            float:right;
+            color:white;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -18,9 +26,9 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    温鑫斌
+                <a a target="iframe_a"  href="/student/mes" id="student_index_a1">
+<%--                  <img src="../../../images/bg_bc.jpg" class="layui-nav-img" id="student_index_img1">--%>
+                    <p id="student_index_p1" align="center" ></p>
                 </a>
             </li>
             <li class="layui-nav-item"><a href="">退出</a></li>
@@ -81,13 +89,38 @@
         © 江西师范大学  软件学院  移动三班  温鑫斌  版权所有  地址：江西省南昌市紫阳大道99号 邮政编码：330022
     </div>
 </div>
-<script src="layui.all.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+<script src="../../../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
-
     });
+
+    var uname  = "${sessionScope.user.uname}";
+    $("#student_index_p1").text(uname);
+    var photo= "${sessionScope.user.photo}";
+    var x="<img src="+photo+" class=\"layui-nav-img\" >";
+    $("#student_index_a1").append(x);
+    /*$(document).ready(function () {
+        $.ajax({
+            url:"/student/index",
+            type:'post',
+            data:{
+
+            },
+            success:function (data) {
+                var photo=data.photo;
+                //           <img src="../../../images/bg_bc.jpg" class="layui-nav-img" id="student_index_img1">
+
+
+                $("#student_index_a1").append(x);
+
+            }
+
+        })
+    })*/
+
 </script>
 
 </body>

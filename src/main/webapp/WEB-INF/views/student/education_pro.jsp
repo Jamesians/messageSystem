@@ -8,8 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<style type="text/css">
-		table{width: 200px;border: 1px solid gray;border-collapse: collapse;}
-		table th,table td{line-height: 30px;text-align: center;border: 1px solid gray;}
+
 		#pro1{ padding: 50px;}
 		#pro2{margin-bottom: 50px}
 		#pro3{ font-size: 18px;}
@@ -35,6 +34,7 @@
 	<p id="pro3" align="center">培养方案</p>
 	</div>
 	<div id = "pro4" align="center"></div>
+	<div id="pro5" align="center"></div>
 </div>
 <script>
 	$(document).ready(function () {
@@ -82,7 +82,85 @@
 						 "<td>\n" + "制定年份" + "</td>\n" +
 						 "<td>\n" + publish_year + "</td>\n" + "</tr>\n"+"</table>";
 				$("#pro4").append(mes);
-			}});})
+			}});
+		var CourseHead1= "<table id=\"tab2\"  class=\"layui-table\" text-align=\"center\">\n" +
+				"                        <colgroup>\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                            <col width=\"200\">\n" +
+				"                        </colgroup>\n" +
+				"                        <thead id=\"tableHead1\">\n" +
+				"                            <tr>\n" +
+				"                                <th >课程类别</th>\n" +
+				"                                <th>课程号</th>\n" +
+				"                                <th>课程名</th>\n" +
+				"                                <th>学期</th>\n" +
+				"                                <th>学位课程</th>\n" +
+				"                                <th>学分</th>\n" +
+				"                                <th>周课堂时长</th>\n" +
+				"                                <th>周实验时长</th>\n" +
+				"                                <th>课堂总时长</th>\n" +
+				"                                <th>实践总时长</th>\n" +
+				"                            </tr>\n" +
+				"                        </thead>\n" +
+				"                        <tbody >\n" +
+				"                        </tbody></table>";
+		var semesters = new Array("大一上学期", "大一下学期", "大二上学期", "大二下学期", "大三上学期", "大三下学期", "大四上学期", "大四下学期");
+		$.ajax({
+					url:"/student/Educationpro-N",
+					type:'post',
+					dataType: 'json',
+					data:{
+						sno:${sessionScope.user.uid}
+					},
+					success:function (data) {
+						$("#pro5").append(CourseHead1);
+						$("#pro5 >table >tbody").attr('id', 'procontent');
+						if (data != null) {
+							$("#procontent").empty();
+							$.each(data,function (index,item) {
+								var score = item.score;
+								var number = item.number;
+								var chour= item.chour;
+								var lhour = item.lhour;
+								var tchour = item.tchour;
+								var tlhour = item.tlhour;
+								var semester = item.semester;
+								var isdegree =item.isdegree;
+								var pname = item.pname;
+								var cname = item.cname;
+								var caname = item.caname;
+								semester = semesters[semester-1];
+								if(isdegree==1)
+									isdegree="是";
+								else isdegree="否";
+
+								var proContent = "<tr>" +
+										"<td>" + caname + "</td>" +
+								        "<td>" + number + "</td>" +
+								        "<td>" + cname + "</td>" +
+										"<td>" + semester+ "</td>"+
+								        "<td>" + isdegree + "</td>" +
+										"<td>" +score + "</td>"+
+								        "<td>" + chour + "</td>"+
+								         "<td>" + lhour+ "</td>"+
+							          	"<td>" + tchour + "</td>"+
+								        "<td>" + tlhour+ "</td>"+
+										"</tr>"
+
+								$("#procontent").append(proContent);
+							})
+						}
+		}});
+	})
 
 </script>
 
