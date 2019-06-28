@@ -20,6 +20,6 @@ public class MainPage {
         if(user.getCode().equals("1"))
             return "student/student_index";
         else
-            return "teacher/mainpag";
+            return "teacher/teacher_index";
     }
 }
